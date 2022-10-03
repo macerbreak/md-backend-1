@@ -14,7 +14,7 @@ export class StationFollowsController {
     return this.stationFollowsService.getAllFollowingStations();
   }
   @Delete()
-  deleteStation(@Body() stationId: number) {
+  deleteStation(@Body() { stationId }: { stationId: number }) {
     return this.stationFollowsService.deleteFollowingStation(stationId);
   }
 }
