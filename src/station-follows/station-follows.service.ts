@@ -25,7 +25,7 @@ export class StationFollowsService {
           savedStation.country
         }.json?t=${Date.now()}`,
       );
-      return returnedCountry.data.cities.filter(
+      return returnedCountry?.data?.cities?.filter(
         (country) => country.city === savedStation.city,
       )[0];
     });
