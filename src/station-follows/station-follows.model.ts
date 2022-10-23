@@ -1,4 +1,5 @@
-import {Column, DataType, Model, Table} from "sequelize-typescript";
+import {Column, DataType, HasMany, Model, Table} from "sequelize-typescript";
+import {StationHistoryModel} from "../stations-history/stations-history.model";
 
 interface StationFollowsModelCreationAttrs{
     country:string,
@@ -23,4 +24,6 @@ export class StationFollowsModel extends Model<StationFollowsModel,StationFollow
     latitude:number
     @Column({ type: DataType.INTEGER, allowNull: true })
     longitude:number
+    @HasMany(()=>StationHistoryModel)
+    history:StationHistoryModel[]
 }

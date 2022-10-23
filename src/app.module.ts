@@ -3,9 +3,11 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { HttpModule } from '@nestjs/axios';
 import { StationFollowsModule } from './station-follows/station-follows.module';
-import {SequelizeModule} from "@nestjs/sequelize";
-import {StationFollowsModel} from "./station-follows/station-follows.model";
-import {ConfigModule} from "@nestjs/config";
+import { SequelizeModule } from '@nestjs/sequelize';
+import { StationFollowsModel } from './station-follows/station-follows.model';
+import { ConfigModule } from '@nestjs/config';
+import { StationsHistoryModule } from './stations-history/stations-history.module';
+import { StationHistoryModel } from './stations-history/stations-history.model';
 
 @Module({
   imports: [
@@ -21,9 +23,10 @@ import {ConfigModule} from "@nestjs/config";
       username: process.env.POSTGRES_USER,
       password: process.env.POSTGRES_PASSWORD.toString(),
       database: process.env.POSTGRES_DB,
-      models: [StationFollowsModel],
+      models: [StationFollowsModel, StationHistoryModel],
       autoLoadModels: true,
     }),
+    StationsHistoryModule,
   ],
   controllers: [AppController],
   providers: [AppService],
