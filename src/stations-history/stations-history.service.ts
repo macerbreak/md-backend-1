@@ -20,4 +20,22 @@ export class StationsHistoryService {
       console.log({ e });
     }
   }
+  async getHistoryByFollowStationId(id: number) {
+    try {
+      const historyItems = await this.stationsHistoryRepository.findAll({
+        where: { stationId: id },
+      });
+      return historyItems;
+    } catch (e) {
+      console.log({ e });
+    }
+  }
+  async getAllHistory() {
+    try {
+      const allHistory = await this.stationsHistoryRepository.findAll();
+      return allHistory;
+    } catch (e) {
+      console.log({ e });
+    }
+  }
 }
